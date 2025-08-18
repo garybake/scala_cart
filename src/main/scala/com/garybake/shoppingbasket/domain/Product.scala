@@ -5,7 +5,4 @@ final case class Product(
   name: String,
   unit: String,  // tin, loaf, bottle, bag, etc.
   unitPrice: BigDecimal
-) {
-  override def toString: String =
-    s"$name ($sku): £$unitPrice per $unit"
-}
+)

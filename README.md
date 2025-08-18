@@ -1,8 +1,25 @@
-## sbt project compiled with Scala 3
+## Scala Cart
+
+Technical assignement to build a shopping basket in scala.
+
+### Requirements
+
+Ensure you have scala 3 installed.
 
 ### Usage
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
+    sbt "run Apples Apples Soup" 
+ 
+Add in as many products as needed.
+Current products are Apples, Milk, Bread and Soup
 
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+
+### Development
+
+Project was created using
+
+    sbt new scala/scala3.g8
+
+Test 
+
+    sbt test

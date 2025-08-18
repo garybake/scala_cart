@@ -3,6 +3,7 @@ package com.garybake.shoppingbasket.cli
 import com.garybake.shoppingbasket.domain._
 
 @main def Main(args: String*): Unit =
+  // args.foreach(println)
   val args = Seq("Apples", "Apples", "Soup", "Soup", "Bread")
   println("Hello shoppers")
   
