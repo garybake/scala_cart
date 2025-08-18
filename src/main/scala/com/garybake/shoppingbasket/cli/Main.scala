@@ -2,12 +2,7 @@ package com.garybake.shoppingbasket.cli
 
 import com.garybake.shoppingbasket.domain._
 
-@main def Main(args: String*): Unit =
-  // args.foreach(println)
-  val args = Seq("Apples", "Apples", "Soup", "Soup", "Bread")
-  println("Hello shoppers")
-  
-  // Create catalog
+def createCatalog(): Catalog =
   val apple = Product(
     sku = "A123",
     name = "Apples",
@@ -29,7 +24,18 @@ import com.garybake.shoppingbasket.domain._
     unitPrice = 0.80
   )
 
-  val catalog: Catalog = Catalog.inMemory(Seq(apple, soup, bread))
+  val milk = Product(
+    sku = "M123",
+    name = "Milk",
+    unit = "bottle",
+    unitPrice = 1.30
+  )
+
+  Catalog.inMemory(Seq(apple, soup, bread))
+
+@main def Main(args: String*): Unit =
+
+  val catalog: Catalog = createCatalog()  
   val products = ItemParser.default.parse(args, catalog)
 
   // Place items in basket
@@ -41,8 +47,6 @@ import com.garybake.shoppingbasket.domain._
     }
   }
 
-  println("Basket contents:")
-  println(basket.lines.map { case (product, qty) => s"${product.name}: $qty x £${product.unitPrice}" }.mkString("\n"))
   println(s"Subtotal: £${basket.subtotal}")
   
   // Calculate discounts using offer service
@@ -50,15 +54,13 @@ import com.garybake.shoppingbasket.domain._
   val discounts = offerService.calculateDiscounts(basket)
   
   if (discounts.nonEmpty) {
-    println("\nApplied discounts:")
     discounts.foreach { discount =>
-      println(s"${discount.label}: -£${discount.amount}")
+      println(s"${discount.label}: £${discount.amount}")
     }
     val totalDiscount = discounts.map(_.amount).sum
-    println(s"Total savings: £$totalDiscount")
-    println(s"Final total: £${basket.subtotal - totalDiscount}")
+    println(s"Total price: £${basket.subtotal - totalDiscount}")
   } else {
-    println("\nNo discounts applicable")
-    println(s"Final total: £${basket.subtotal}")
+    println("(No offers available)")
+    println(s"Total price: £${basket.subtotal}")
   }
 
