@@ -20,6 +20,11 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Setup SBT
+        uses: olafurpg/setup-sbt@v1
+        with:
+          java-version: 17
+
       - name: Cache sbt
         uses: actions/cache@v4
         with:
