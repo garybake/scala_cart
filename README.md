@@ -1,5 +1,7 @@
 ## Scala Cart
 
+[![CI](https://github.com/garybake/scala_cart/actions/workflows/ci.yml/badge.svg)](https://github.com/garybake/scala_cart/actions/workflows/ci.yml)
+
 Technical assignement to build a shopping basket in scala.
 
 ### Domain
