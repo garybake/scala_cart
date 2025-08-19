@@ -4,11 +4,6 @@ import com.garybake.shoppingbasket.domain._
 import munit.FunSuite
 
 class MySuite extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
   
   test("discount calculation works correctly") {
     val apple = Product("A123", "Apples", "bag", 1.00)

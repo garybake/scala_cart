@@ -35,7 +35,7 @@ def createCatalog(): Catalog =
 
 @main def Main(args: String*): Unit =
 
-  val catalog: Catalog = createCatalog()  
+  val catalog: Catalog = createCatalog()
   val products = ItemParser.default.parse(args, catalog)
 
   // Place items in basket
@@ -48,11 +48,11 @@ def createCatalog(): Catalog =
   }
 
   println(s"Subtotal: £${basket.subtotal}")
-  
+
   // Calculate discounts using offer service
   val offerService = OfferService.default
   val discounts = offerService.calculateDiscounts(basket)
-  
+
   if (discounts.nonEmpty) {
     discounts.foreach { discount =>
       println(s"${discount.label}: £${discount.amount}")
@@ -63,4 +63,3 @@ def createCatalog(): Catalog =
     println("(No offers available)")
     println(s"Total price: £${basket.subtotal}")
   }
-
